@@ -1,0 +1,105 @@
+{
+  "name": "64tass",
+  "displayName": "64tass",
+  "description": "Language support for 64tass",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.45.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:64tass",
+    "onCommand:64tass.build",
+    "onCommand:64tass.build-run",
+    "onCommand:64tass.build-debug"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "64tass.build",
+        "title": "Build",
+        "category": "64tass"
+      },
+      {
+        "command": "64tass.build-run",
+        "title": "Build and Run",
+        "category": "64tass"
+      },
+      {
+        "command": "64tass.build-debug",
+        "title": "Build and Debug",
+        "category": "64tass"
+      }
+    ],
+    "languages": [
+      {
+        "id": "64tass",
+        "aliases": [
+          "64tass",
+          "64tass"
+        ],
+        "extensions": [
+          ".asm",
+          ".ASM"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "64tass",
+        "scopeName": "source.64tass",
+        "path": "./syntaxes/64tass.tmLanguage"
+      }
+    ],
+    "configuration": {
+      "title": "64tass Configuration",
+      "properties": {
+        "64tass.64tassBin": {
+          "type": "string",
+          "default": "64tass",
+          "description": "Full path to 64tass binary"
+        },
+        "64tass.viceBin": {
+          "type": "string",
+          "default": "x64",
+          "description": "Full path to VICE binary"
+        },
+        "64tass.useC64Debugger": {
+          "type": "boolean",
+          "default": false,
+          "description": "Debug and run with C64 Debugger"
+        },
+        "64tass.c64DebuggerBin": {
+          "type": "string",
+          "default": "c64debugger",
+          "description": "Full path to C64 Debugger binary"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.45.0",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "eslint": "^6.8.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.2",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0"
+  }
+}
