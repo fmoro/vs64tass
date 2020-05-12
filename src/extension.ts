@@ -6,7 +6,6 @@ import { run } from './commands/run';
 
 export function activate(context: vscode.ExtensionContext) {
   const outputChannel = vscode.window.createOutputChannel('64tass');
-
   let disposable;
 
   disposable = vscode.commands.registerCommand('64tass.build', () =>

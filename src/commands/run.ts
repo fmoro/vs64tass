@@ -1,24 +1,60 @@
 import * as path from 'path';
-import { workspace, window } from 'vscode';
+import { workspace } from 'vscode';
 import { spawn } from 'child_process';
 
 export type DebugOptions = {
   debug?: boolean;
 };
 
-export function run(outputFile?: string | void, options: DebugOptions = {}) {
-  if (!outputFile) {
-    throw new Error('lalala');
+export function run(file?: string | void, options: DebugOptions = {}) {
+  if (!file) {
     return;
   }
-  const workDir = path.dirname(outputFile);
 
+  const workDir = path.dirname(file);
   if (!workDir) {
-    throw new Error('lalala');
     return;
   }
+
+  const fileName = path.basename(file, '.prg');
+
   const config = workspace.getConfiguration('64tass');
   const { debug } = options;
+
+  let command: string;
+  let args: string[];
+  if (debug) {
+    if (config.debugger === 'vice') {
+      command = config.vice;
+      args = [
+        '-logfile',
+        `${fileName}-vice.log`,
+        '-moncommands',
+        `${fileName}.vs`,
+      ];
+    } else {
+      command = config.c64Debugger;
+      args = [
+        'layout',
+        '10',
+        '-wait',
+        '2500',
+        '-pgr',
+        file,
+        '-autojmp',
+        '-debuginfo',
+        `${fileName}.dbg`,
+      ];
+    }
+  } else {
+    if (config.runner === 'vice') {
+      command = config.vice;
+      args = ['-logfile', `${fileName}-vice.log`];
+    } else {
+      command = config.c64Debugger;
+      args = ['layout', '1', '-wait', '2500', '-pgr', file, '-autojmp'];
+    }
+  }
 
   const spawnOptions: any = {
     cwd: workDir,
@@ -27,23 +63,5 @@ export function run(outputFile?: string | void, options: DebugOptions = {}) {
     shell: true,
   };
 
-  if (config.useC64Debugger) {
-    const layoutArg = `-layout ${debug ? '10' : '1'}`;
-    const args = ['-wait 2500', '-prg', outputFile, '-autojmp'];
-    const debugArgs = debug
-      ? ['-debuginfo', `${path.basename(outputFile, '.prg')}.dbg`]
-      : [];
-    spawn(
-      config.c64DebuggerBin,
-      [layoutArg, ...debugArgs, ...args],
-      spawnOptions
-    );
-  } else {
-    const logfile = `${path.basename(outputFile)}-vice.log`;
-    const args = ['-logfile', logfile];
-    const debugArgs = debug
-      ? ['-moncommands', `${path.basename(outputFile, '.prg')}.vs`]
-      : [];
-    spawn(config.viceBin, [...args, ...debugArgs, outputFile], spawnOptions);
-  }
+  spawn(command, args, spawnOptions);
 }

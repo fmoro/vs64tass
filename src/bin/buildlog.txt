@@ -1,9 +1,10 @@
 parsing
-Got 4 errors while executing:
-  (/home/darkstar/c64/vscode-64tass/64tass/src/extension.ts 3:10) Syntax error
-  (/home/darkstar/c64/vscode-64tass/64tass/src/extension.ts 5:8) Syntax error
-  (/home/darkstar/c64/vscode-64tass/64tass/src/extension.ts 8:17) Syntax error
-  (/home/darkstar/c64/vscode-64tass/64tass/src/extension.ts 41:17) Syntax error
+Got 5 errors while executing:
+  (/home/darkstar/c64/vscode-64tass/vs64tass/src/extension.ts 3:10) Syntax error
+  (/home/darkstar/c64/vscode-64tass/vs64tass/src/extension.ts 4:8) Syntax error
+  (/home/darkstar/c64/vscode-64tass/vs64tass/src/extension.ts 5:8) Syntax error
+  (/home/darkstar/c64/vscode-64tass/vs64tass/src/extension.ts 7:17) Syntax error
+  (/home/darkstar/c64/vscode-64tass/vs64tass/src/extension.ts 29:17) Syntax error
 
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below

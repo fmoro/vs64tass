@@ -1,5 +1,5 @@
-import { window, workspace, OutputChannel } from 'vscode';
 import * as path from 'path';
+import { window, workspace, OutputChannel } from 'vscode';
 import { spawnSync } from 'child_process';
 
 export type CompileOptions = {
@@ -31,7 +31,7 @@ export function compile(
     const args = ['-Wall'];
     const debugArgs = debug ? ['--dump-labels', '--vice-labels'] : [];
     const proc = spawnSync(
-      config['64tassBin'],
+      config.compiler,
       [...args, ...debugArgs, currentFile, '-o', outputFile],
       { cwd: workDir }
     );

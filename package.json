@@ -58,25 +58,46 @@
     "configuration": {
       "title": "64tass Configuration",
       "properties": {
-        "64tass.64tassBin": {
+        "64tass.compiler": {
           "type": "string",
           "default": "64tass",
-          "description": "Full path to 64tass binary"
+          "description": "Full path to 64tass cross-compiler binary"
         },
-        "64tass.viceBin": {
+        "64tass.vice": {
           "type": "string",
-          "default": "x64",
+          "default": "x64sc",
           "description": "Full path to VICE binary"
         },
-        "64tass.useC64Debugger": {
-          "type": "boolean",
-          "default": false,
-          "description": "Debug and run with C64 Debugger"
-        },
-        "64tass.c64DebuggerBin": {
+        "64tass.c64Debugger": {
           "type": "string",
           "default": "c64debugger",
           "description": "Full path to C64 Debugger binary"
+        },
+        "64tass.runner": {
+          "type": "string",
+          "enum": [
+            "vice",
+            "c64Debugger"
+          ],
+          "default": "vice",
+          "description": "Choose runner software",
+          "enumDescriptions": [
+            "Use VICE",
+            "Use C64 Debugger"
+          ]
+        },
+        "64tass.debugger": {
+          "type": "string",
+          "enum": [
+            "vice",
+            "c64Debugger"
+          ],
+          "default": "vice",
+          "description": "Choose debugger software",
+          "enumDescriptions": [
+            "Use VICE",
+            "Use C64 Debugger"
+          ]
         }
       }
     }
@@ -90,13 +111,13 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.45.0",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.11.0",
+    "@types/vscode": "^1.45.0",
+    "@typescript-eslint/eslint-plugin": "^2.32.0",
+    "@typescript-eslint/parser": "^2.32.0",
     "eslint": "^6.8.0",
-    "@typescript-eslint/parser": "^2.30.0",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
     "glob": "^7.1.6",
     "mocha": "^7.1.2",
     "typescript": "^3.8.3",
