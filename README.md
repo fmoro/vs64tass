@@ -1,65 +1,69 @@
 # 64tass README
 
-This is the README for your extension "64tass". After writing up a brief description, we recommend including the following sections.
+Visual Studio Code language support for C64 development with [64tass](http://tass64.sourceforge.net/)
+
+This extension is based in [VSCode KickAss (C64)](https://github.com/CaptainJiNX/vscode-kickass-c64) extension, coded by Roger Wilson.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- language configuration/syntax coloring
+- build, run and debug commands
+- support for [VICE](http://vice-emu.sourceforge.net/) and [C64 Debugger](https://c64-debugger.sourceforge.io/)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- 64tass cross-compiler for build
+- [VICE](http://vice-emu.sourceforge.net/) and/or [C64 Debugger](https://c64-debugger.sourceforge.io/) for run and debug
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+- `64tass.compiler`: Full path to 64tass cross-compiler binary
+- `64tass.vice`: Full path to VICE binary
+- `4tass.c64Debugger`: Full path to C64 Debugger binary
+- `64tass.runner`: Runner (VICE or C64 Debugger)
+- `64tass.debugger`: Debugger (VICE or C64 Debugger)
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Missing language server
+
+## How to contribute
+
+### Prerequisites
+
+- [Visual Studio Code](https://code.visualstudio.com/) (with `esbenp.prettier-vscode`, `dbaeumer.vscode-eslint` extensions installed)
+- [nvm](https://github.com/creationix/nvm) (download and install)
+
+After you clone the repo, run
+
+`nvm install` to get the latest node version
+
+then
+
+`npm install` to install all dependencies
+
+then
+
+`code .` to start coding...
+
+If everything is setup correctly, the code should be automatically formatted correctly on each save.
+
+Running the extension locally:
+
+- Press `F5` to open a new window with the extension loaded.
+- Create a new .asm file
+- Verify that stuff works as expected.
+- Relaunch the extension from the debug toolbar after making changes to the files listed above.
+- You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window load your changes.
+
+Read more about extension development [here](https://code.visualstudio.com/api).
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 0.0.1
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release of 64tass

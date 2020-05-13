@@ -1,9 +1,9 @@
 # Change Log
 
-All notable changes to the "64tass" extension will be documented in this file.
+## 0.0.1
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Added
 
-## [Unreleased]
-
-- Initial release
+- language configuration/syntax coloring
+- build, run and debug commands
+- support for [VICE](http://vice-emu.sourceforge.net/) and [C64 Debugger](https://c64-debugger.sourceforge.io/)
