@@ -3,11 +3,20 @@
   "displayName": "64tass",
   "description": "Language support for 64tass",
   "version": "0.0.1",
+  "icon": "assets/64tass.png",
+  "author": {
+    "name": "Federico Moro",
+    "email": "zayerin@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/fmoro/vs64tass"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.45.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "onLanguage:64tass",
