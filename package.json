@@ -3,6 +3,7 @@
   "displayName": "64tass",
   "description": "Language support for 64tass",
   "version": "0.0.1",
+  "publisher": "Federico",
   "icon": "assets/64tass.png",
   "author": {
     "name": "Federico Moro",

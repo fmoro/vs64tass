@@ -31,6 +31,7 @@ export function run(file?: string | void, options: DebugOptions = {}) {
         `${fileName}-vice.log`,
         '-moncommands',
         `${fileName}.vs`,
+        file,
       ];
     } else {
       command = config.c64Debugger;
@@ -39,7 +40,7 @@ export function run(file?: string | void, options: DebugOptions = {}) {
         '10',
         '-wait',
         '2500',
-        '-pgr',
+        '-prg',
         file,
         '-autojmp',
         '-debuginfo',
@@ -49,10 +50,10 @@ export function run(file?: string | void, options: DebugOptions = {}) {
   } else {
     if (config.runner === 'vice') {
       command = config.vice;
-      args = ['-logfile', `${fileName}-vice.log`];
+      args = ['-logfile', `${fileName}-vice.log`, file];
     } else {
       command = config.c64Debugger;
-      args = ['layout', '1', '-wait', '2500', '-pgr', file, '-autojmp'];
+      args = ['layout', '1', '-wait', '2500', '-prg', file, '-autojmp'];
     }
   }
 
