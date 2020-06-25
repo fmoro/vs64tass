@@ -64,6 +64,10 @@ Read more about extension development [here](https://code.visualstudio.com/api).
 
 Users appreciate release notes as you update your extension.
 
+### 0.0.2
+
+Fix run commands
+
 ### 0.0.1
 
 Initial release of 64tass
