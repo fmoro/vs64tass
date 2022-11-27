@@ -1,13 +1,21 @@
 import * as path from 'path';
-import { workspace } from 'vscode';
+import { workspace, OutputChannel } from 'vscode';
 import { spawn } from 'child_process';
 
 export type DebugOptions = {
   debug?: boolean;
 };
 
-export function run(file?: string | void, options: DebugOptions = {}) {
+export function run(
+  file?: string | void, 
+  outputChannel?: OutputChannel | void, 
+  options: DebugOptions = {}
+) {
   if (!file) {
+    return;
+  }
+
+  if (!outputChannel) {
     return;
   }
 
@@ -63,6 +71,13 @@ export function run(file?: string | void, options: DebugOptions = {}) {
     stdio: 'inherit',
     shell: true,
   };
+
+  // Helpful debugging information
+  outputChannel.appendLine("");
+  outputChannel.appendLine("************************************************************");
+  outputChannel.appendLine('Running command   : ' + command);
+  outputChannel.appendLine('  with args       : ' + JSON.stringify(args));
+  outputChannel.appendLine('  and spawnOptions: ' + JSON.stringify(spawnOptions));
 
   spawn(command, args, spawnOptions);
 }

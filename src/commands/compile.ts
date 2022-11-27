@@ -43,7 +43,10 @@ export function compile(
       outputChannel.append(proc.stderr.toString());
     } else {
       outputChannel.append(`${outputFile} successfully compiled`);
-      return outputFile;
+
+      // Need to return full path to outputFile because VICE uses it to 
+      // run the file.
+      return path.join(workDir, outputFile);
     }
   }
 }
